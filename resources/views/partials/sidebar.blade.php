@@ -4,7 +4,10 @@
     <div class="offcanvas-header bg-primary text-white flex-column text-center">
         <div class="dropdown">
             <i class="fa-solid fa-circle-user fa-3x mb-2 d-block"></i>
-            <h5 class="mb-0">John Doe</h5>
+            <h5 class="mb-0 dropdown-toggle" data-bs-toggle="dropdown" style="cursor:pointer">
+                {{ auth()->user()->username }}
+            </h5>
+
 
             <!-- DROPDOWN MENU -->
             <ul class="dropdown-menu dropdown-menu-dark w-100 text-start border-0 mt-3">
@@ -24,29 +27,42 @@
     </div>
 
     <!-- BODY -->
-    <div class="offcanvas-body p-0">
+    <div class="offcanvas-body p-3">
         <div class="list-group list-group-flush">
 
-            <a href="/dashboard" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
+            <a href="/dashboard"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2
+                     rounded-3 w-100 my-2
+                      {{ request()->is('dashboard') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-gauge"></i>
                 Dashboard
             </a>
 
-            <a href="/peminjam" class="list-group-item list-group-item-action d-flex align-items-center gap-1">
+            <a href="/peminjam"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2
+                     rounded-3 w-100 my-2
+                      {{ request()->is('peminjam') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-users"></i>
                 Daftar Peminjam
             </a>
 
-            <a href="/siswa " class="list-group-item list-group-item-action d-flex align-items-center gap-2">
+            <a href="/siswa"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2
+                     rounded-3 w-100 my-2
+                      {{ request()->is('siswa') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-user-graduate"></i>
                 Daftar Siswa
             </a>
 
-            <a href="/riwayat" class="list-group-item list-group-item-action d-flex align-items-center gap-2">
+            <a href="/riwayat"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2
+                     rounded-3 w-100 my-2
+                      {{ request()->is('riwayat') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-clock-rotate-left"></i>
                 Riwayat
             </a>
 
         </div>
+
     </div>
 </div>

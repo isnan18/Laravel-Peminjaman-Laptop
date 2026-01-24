@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -8,9 +10,8 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('pages.login');
 });
-Route::get('/dashboard', function () {
-    return view('pages.dashboard');
-});
+Route::post('/login', [AuthController::class,'login']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/peminjam', function () {
     return view('pages.peminjam');
 });

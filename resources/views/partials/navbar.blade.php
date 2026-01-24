@@ -8,7 +8,7 @@
 
         <div class="d-flex gap-2 ">
             <!-- LOGO -->
-            <img src="../img/images__2_-removebg-preview.png" alt="Logo" height="40" class="me-2">
+            <img src="../img/image3.png" alt="Logo" height="40" class="me-2">
 
             <!-- TITLE -->
             <span class="navbar-text text-white fw-semibold">
@@ -32,8 +32,8 @@
                 <i class="fa-solid fa-circle-user text-white fs-4"></i>
 
                 <a class="text-white text-decoration-none dropdown-toggle" href="#" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Hi, John Doe
+                    data-bs-toggle="dropdown" aria-expanded="false"> Hi,
+                    <span>{{ auth()->user()->username }}</span>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark border-0 mt-2">

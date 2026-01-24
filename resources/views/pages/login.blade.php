@@ -6,6 +6,9 @@
 
             <!-- Card Login -->
             <div class="col-lg-10">
+                @if (session('failed'))
+                    <div class="alert alert-danger text-center">{{ session('failed') }}</div>
+                @endif
                 <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
                     <div class="row g-0">
 
@@ -31,34 +34,43 @@
                                     Login Sistem
                                 </h4>
 
-                                <form>
-
+                                <form action="/login" method="POST">
+                                    @csrf
                                     <!-- Username -->
+                                    @error('username')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Username</label>
                                         <div class="input-group">
                                             <span class="input-group-text bg-primary text-white">
                                                 <i class="fa-solid fa-user"></i>
                                             </span>
-                                            <input type="text" class="form-control" placeholder="Masukkan username">
+                                            <input type="text" name="username" class="form-control"
+                                                placeholder="Masukkan username">
                                         </div>
                                     </div>
 
                                     <!-- Password -->
+                                    @error('password')
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                     <div class="mb-3">
                                         <label class="form-label fw-semibold">Password</label>
                                         <div class="input-group">
                                             <span class="input-group-text bg-primary text-white">
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
-                                            <input type="password" class="form-control" placeholder="Masukkan password">
+                                            <input type="password" name="password" class="form-control"
+                                                placeholder="Masukkan password">
                                         </div>
                                     </div>
 
                                     <!-- Remember & Forgot -->
                                     <div class="d-flex justify-content-between align-items-center mb-4">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                                            <input class="form-check-input" type="checkbox" name="remember"
+                                                id="rememberMe">
                                             <label class="form-check-label">
                                                 Remember me
                                             </label>
@@ -71,7 +83,7 @@
 
                                     <!-- Button -->
                                     <div class="d-grid">
-                                        <button type="button" class="btn btn-primary btn-lg rounded-pill shadow">
+                                        <button type="submit" class="btn btn-primary btn-lg rounded-pill shadow">
                                             <i class="fa-solid fa-right-to-bracket me-2"></i> Login
                                         </button>
                                     </div>
