@@ -12,12 +12,12 @@
             <!-- DROPDOWN MENU -->
             <ul class="dropdown-menu dropdown-menu-dark w-100 text-start border-0 mt-3">
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/edit">
                         <i class="fa-solid fa-pen-to-square me-2"></i>Edit Profil
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item text-danger" href="#">
+                    <a class="dropdown-item text-danger" href="/logout">
                         <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
                     </a>
                 </li>

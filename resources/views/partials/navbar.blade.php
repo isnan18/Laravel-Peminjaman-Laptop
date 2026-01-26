@@ -38,12 +38,12 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark border-0 mt-2">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="/edit">
                             <i class="fa-solid fa-pen-to-square me-2"></i>Edit Profil
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item text-danger" href="#">
+                        <a class="dropdown-item text-danger" href="/logout">
                             <i class="fa-solid fa-right-from-bracket me-2"></i>Logout
                         </a>
                     </li>

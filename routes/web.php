@@ -11,7 +11,10 @@ Route::get('/login', function () {
     return view('pages.login');
 });
 Route::post('/login', [AuthController::class,'login']);
+Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/edit', [DashboardController::class, 'edit']);
+Route::post('/update', [DashboardController::class, 'update']);
 Route::get('/peminjam', function () {
     return view('pages.peminjam');
 });
