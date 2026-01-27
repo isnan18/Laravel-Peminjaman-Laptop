@@ -3,6 +3,16 @@
 @include('partials.navbar')
 @include('partials.sidebar')
 <section class="container-fluid mt-4">
+    {{-- alert ketika berhasil login --}}
+    @if (session('success'))
+        <div class="position-fixed top-0 start-50 translate-middle-x mt-3">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="z-index: 5">
+                <i class="fa-solid fa-circle-check me-2"></i>
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    @endif
     <div class="row g-4 ms-1 me-1">
         {{-- Card kelas X --}}
         <div class="col-12 col-lg-4">
@@ -198,3 +208,9 @@
 
     </div>
 </section>
+<script>
+    setTimeout(() => {
+        let alert = document.querySelector('.alert');
+        if (alert) alert.classList.remove('show');
+    }, 3000);
+</script>

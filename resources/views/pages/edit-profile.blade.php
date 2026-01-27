@@ -3,6 +3,16 @@
 @include('partials.navbar')
 @include('partials.sidebar')
 <section class="container mt-4">
+    {{-- alert ketika data berhasil diupdate --}}
+    @if (session('sukses'))
+        <div class="position-fixed top-0 start-50 translate-middle-x mt-3">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" style="z-index: 5">
+                <i class="fa-solid fa-circle-check me-2"></i>
+                {{ session('sukses') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow">
@@ -11,11 +21,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="/update" method="POST">
                         @csrf
-                        @method('PUT')
-
-                        <!-- Foto -->
+                        <!-- Icon -->
                         <div class="text-center mb-3">
                             <i class="fa-solid fa-circle-user fa-5x"></i>
                         </div>

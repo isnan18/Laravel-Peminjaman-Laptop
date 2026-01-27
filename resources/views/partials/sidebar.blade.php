@@ -38,28 +38,46 @@
                 Dashboard
             </a>
 
-            <a href="/peminjam"
-                class="list-group-item list-group-item-action d-flex align-items-center gap-2
-                     rounded-3 w-100 my-2
-                      {{ request()->is('peminjam') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-users"></i>
-                Daftar Peminjam
-            </a>
-
+            <!-- Data Siswa -->
             <a href="/siswa"
-                class="list-group-item list-group-item-action d-flex align-items-center gap-2
-                     rounded-3 w-100 my-2
-                      {{ request()->is('siswa') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-user-graduate"></i>
-                Daftar Siswa
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('siswa*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-user-graduate"></i> Data Siswa
             </a>
 
+            <!-- Laptop -->
+            <a href="/laptop"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('laptop*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-laptop"></i> Laptop Siswa
+            </a>
+
+            <!-- Guru Penanggung Jawab -->
+            <a href="/guru"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('guru*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-chalkboard-user"></i> Guru Penanggung Jawab
+            </a>
+
+            <!-- Loker -->
+            <a href="/loker"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('loker*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-box-archive"></i> Data Loker
+            </a>
+
+            <!-- Transaksi -->
+            <a href="/transaksi"
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('transaksi*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-right-left"></i> Transaksi
+            </a>
+
+            <!-- Riwayat -->
             <a href="/riwayat"
-                class="list-group-item list-group-item-action d-flex align-items-center gap-2
-                     rounded-3 w-100 my-2
-                      {{ request()->is('riwayat') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                Riwayat
+                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
+                {{ request()->is('riwayat*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
             </a>
 
         </div>

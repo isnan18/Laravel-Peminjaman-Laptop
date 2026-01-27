@@ -11,7 +11,7 @@
                 <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
                     <h6 class="mb-0 fw-semibold">
                         <i class="fa-solid fa-laptop"></i>
-                        Daftar Siswa Pembawa Laptop
+                        Daftar Siswa
                     </h6>
                     <span class="badge bg-light text-danger">
                         Total: 2 Siswa

@@ -12,13 +12,13 @@ class AuthController extends Controller
             'password' => 'required|max:50',
         ]);
         if (Auth::attempt($request->only('username','password'), $request->remember)){
-            return redirect('/dashboard');
+            return redirect('/dashboard')->with('success','Login berhasil, Selamat datang');
         }
-        return back()->with('failed','username atau password salah');
+        return back()->with('failed','Username atau Password salah');
     }
 
     public function logout (){
         Auth::logout(Auth::user());
-        return redirect('/login');
+        return redirect('/login')->with('logout', 'Anda telah logout');
     }
 }

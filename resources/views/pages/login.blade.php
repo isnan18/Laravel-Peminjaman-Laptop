@@ -1,9 +1,18 @@
 @extends('template.head')
 <title>@yield('title', 'Login')</title>
 <section class="vh-100 d-flex align-items-center">
+    {{-- alert ketika berhasil logout --}}
+    @if (session('logout'))
+        <div class="position-fixed top-0 start-50 translate-middle-x mt-3">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="z-index: 5">
+                <i class="fa-solid fa-circle-check me-2"></i>
+                {{ session('logout') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    @endif
     <div class="container">
         <div class="row justify-content-center align-items-center">
-
             <!-- Card Login -->
             <div class="col-lg-10">
                 @if (session('failed'))
