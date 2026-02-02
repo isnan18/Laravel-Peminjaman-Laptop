@@ -38,25 +38,11 @@
                 Dashboard
             </a>
 
-            <!-- Data Siswa -->
-            <a href="/siswa"
-                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
-                {{ request()->is('siswa*') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-user-graduate"></i> Data Siswa
-            </a>
-
             <!-- Laptop -->
             <a href="/laptop"
                 class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
-                {{ request()->is('laptop*') ? 'active bg-primary text-white' : '' }}">
+                {{ request()->is('laptop') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-laptop"></i> Laptop Siswa
-            </a>
-
-            <!-- Guru Penanggung Jawab -->
-            <a href="/guru"
-                class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
-                {{ request()->is('guru*') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-chalkboard-user"></i> Guru Penanggung Jawab
             </a>
 
             <!-- Loker -->
@@ -67,10 +53,10 @@
             </a>
 
             <!-- Transaksi -->
-            <a href="/transaksi"
+            <a href="/peminjaman"
                 class="list-group-item list-group-item-action d-flex align-items-center gap-2 rounded-3 my-2
-                {{ request()->is('transaksi*') ? 'active bg-primary text-white' : '' }}">
-                <i class="fa-solid fa-right-left"></i> Transaksi
+                {{ request()->is('peminjaman*') ? 'active bg-primary text-white' : '' }}">
+                <i class="fa-solid fa-right-left"></i> Peminjaman
             </a>
 
             <!-- Riwayat -->
@@ -79,7 +65,6 @@
                 {{ request()->is('riwayat*') ? 'active bg-primary text-white' : '' }}">
                 <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
             </a>
-
         </div>
 
     </div>
