@@ -19,16 +19,21 @@ class LaptopController extends Controller
         $request->validate([
             'kode_laptop'=>'required|unique:laptops',
             'merk'=>'required',
-            'loker_id'=>'required|exists:lokers,id'
+            'loker'=>'required|exists:lokers,id'
         ]);
         
         Laptop::create([
             'kode_laptop' => $request->kode_laptop,
             'merk' => $request->merk,
-            'loker_id' => $request->loker_id,
+            'loker_id' => $request->loker,
             'status' => 'tersedia'
         ]);
 
         return redirect('/laptop')->with('success', 'Data laptop berhasil ditambahkan');
+    }
+    
+    public function destroy($id){
+        Laptop::findOrFail($id)->delete();
+        return redirect()->back()->with('hapus', 'Data Laptop berhasil dihapus');
     }
 }

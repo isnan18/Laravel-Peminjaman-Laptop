@@ -14,6 +14,17 @@
         </div>
     @endif
 
+    {{-- alert ketika berhasil menghapus data laptop --}}
+    @if (session('hapus'))
+        <div class="position-fixed top-0 start-50 translate-middle-x mt-3">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert" style="z-index: 5">
+                <i class="fa-solid fa-circle-check me-2"></i>
+                {{ session('hapus') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    @endif
+
     <div class="row justify-content-center ms-2 me-2">
         <div class="col-lg-12 col-sm-4">
             <div class="card shadow border-0 rounded-4">
@@ -60,12 +71,13 @@
                             <tbody>
                                 @foreach ($laptops as $lp)
                                     <tr>
-                                        <td class="text-center">1</td>
+                                        <td class="text-center">{{ $lp->id }}</td>
                                         <td class="text-center">
                                             <span class="badge bg-info">{{ $lp->kode_laptop }}</span>
                                         </td>
                                         <td class="text-center">{{ $lp->merk }}</td>
-                                        <td class="text-center">{{ $lp->lokers->kode_loker }}</td>
+                                        <td class="text-center">{{ $lp->loker?->kode_loker }}
+                                        </td>
                                         <td class="text-center">{{ $lp->status }} </td>
                                         <td class="text-center">
                                             <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
@@ -73,32 +85,12 @@
                                                 <i class="fa-solid fa-pencil"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                                data-bs-target="#hapus-data-laptop">
+                                                data-bs-target="#hapus-data-laptop" data-id={{ $lp->id }}>
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
                                     </tr>
                                 @endforeach
-
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">
-                                        <span class="badge bg-info">LP-02</span>
-                                    </td>
-                                    <td class="text-center">Acer</td>
-                                    <td class="text-center">A6</td>
-                                    <td class="text-center">Di Loker</td>
-                                    <td class="text-center">
-                                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal"
-                                            data-bs-target="#edit-laptop">
-                                            <i class="fa-solid fa-pencil"></i>
-                                        </button>
-                                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#hapus-data-laptop">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -123,16 +115,24 @@
                 <form action="/laptop/store" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="code" class="form-label">Code Laptop</label>
-                        <input type="text" class="form-control" id="code" aria-describedby="emailHelp">
+                        <label for="kode_laptop" class="form-label">Kode Laptop</label>
+                        <input type="text" class="form-control" id="kode_laptop" name="kode_laptop"
+                            aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
                         <label for="merk" class="form-label">Merk Laptop</label>
-                        <input type="text" class="form-control" id="merk" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" id="merk" name="merk"
+                            aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="loker" class="form-label">Loker</label>
-                        <input type="text" class="form-control" id="loker" aria-describedby="emailHelp">
+                        <label class="form-label">Loker</label>
+                        <select name="loker" class="form-control">
+                            @foreach ($lokers as $loker)
+                                <option value="{{ $loker->id }}">
+                                    {{ $loker->kode_loker }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
             </div>
             <div class="modal-footer">
@@ -202,8 +202,16 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-danger">Hapus</button>
+                <a href="" class="btn btn-danger" id="btn-hapus">Hapus</a>
             </div>
         </div>
     </div>
 </div>
+<script>
+    document.getElementById('hapus-data-laptop').addEventListener('show.bs.modal', function(event) {
+        let button = event.relatedTarget // tombol yang diklik
+        let id = button.getAttribute('data-id') // ambil id laptop
+        let hapusBtn = document.getElementById('btn-hapus') // buat variabel untuk menampung elemen button hapus
+        hapusBtn.href = '/laptop/delete/' + id // tambahkan href pada button hapus
+    })
+</script>
